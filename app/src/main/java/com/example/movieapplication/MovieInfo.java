@@ -35,13 +35,14 @@ public class MovieInfo extends AppCompatActivity {
                 startActivity(intToHome);
             }
         });
+
         Intent in = getIntent();
         String userInput = in.getStringExtra("input");
+        String movie = userInput.replaceAll(" ","+");
         String apiKey="&apikey=97d1039f";
-        final String url= "http://www.omdbapi.com/?t="+userInput+apiKey;
+        final String url= "http://www.omdbapi.com/?t="+movie+apiKey;
 
         final TextView textView = (TextView) findViewById(R.id.textView2);
-        Toast.makeText(MovieInfo.this,url,Toast.LENGTH_LONG).show();
         if(userInput.isEmpty()){
 
         }
@@ -53,7 +54,8 @@ public class MovieInfo extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        textView.setText("Response is: "+ response);
+                        textView.setText("Response is: "+ response.substring(1,500));
+
                     }
                 }, new Response.ErrorListener() {
             @Override
