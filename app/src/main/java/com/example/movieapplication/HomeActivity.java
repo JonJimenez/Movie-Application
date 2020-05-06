@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 FirebaseAuth.getInstance().signOut();
-                Intent intToMain=new Intent(HomeActivity.this,MainActivity.class);
+                Intent intToMain = new Intent(HomeActivity.this,MainActivity.class);
                 startActivity(intToMain);
             }
         });
@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         buttonSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intToMovieInfo=new Intent(HomeActivity.this,MovieInfo.class);
+                Intent intToMovieInfo = new Intent(HomeActivity.this,MovieInfo.class);
                 intToMovieInfo.putExtra("input",userInput.getText().toString());
                 startActivity(intToMovieInfo);
             }
