@@ -40,20 +40,13 @@ public class MovieInfo extends AppCompatActivity {
         final ImageView posterView = (ImageView) findViewById(R.id.imageView2);
         final TextView actorsView = (TextView) findViewById(R.id.Actors);
         final Button backToHome = (Button)findViewById(R.id.button2);
-        final Button favorite = (Button)findViewById(R.id.button3)
+        final Button favorite = (Button)findViewById(R.id.button3);
 
         backToHome.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intToHome=new Intent(MovieInfo.this,HomeActivity.class);
                 startActivity(intToHome);
-            }
-        });
-        favorite.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-
-
             }
         });
 
@@ -93,7 +86,6 @@ public class MovieInfo extends AppCompatActivity {
                             e.printStackTrace();
                             Toast.makeText(MovieInfo.this,"Error! Please Try Again",Toast.LENGTH_LONG).show();
                         }
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -112,30 +104,17 @@ public class MovieInfo extends AppCompatActivity {
             this.imageView = imageView;
         }
 
-        /*
-            doInBackground(Params... params)
-                Override this method to perform a computation on a background thread.
-         */
         protected Bitmap doInBackground(String...urls){
             String urlOfImage = urls[0];
             Bitmap logo = null;
             try{
                 InputStream is = new URL(urlOfImage).openStream();
-                /*
-                    decodeStream(InputStream is)
-                        Decode an input stream into a bitmap.
-                 */
                 logo = BitmapFactory.decodeStream(is);
             }catch(Exception e){ // Catch the download exception
                 e.printStackTrace();
             }
             return logo;
         }
-
-        /*
-            onPostExecute(Result result)
-                Runs on the UI thread after doInBackground(Params...).
-         */
         protected void onPostExecute(Bitmap result){
             imageView.setImageBitmap(result);
         }
