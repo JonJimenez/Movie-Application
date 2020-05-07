@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         password=findViewById(R.id.editText2);
         buttonSignIn=findViewById(R.id.button);
         textSignUp=findViewById(R.id.textView);
-
+        //changes page from login screen to home screen
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         };
-
+        //When you click the button sign in it checks to see if you are a valid user and if so it lets you login
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -83,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        //When they click the text it changes from the login page to the signup page
         textSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

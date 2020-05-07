@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 String email = emailId.getText().toString();
                 String pass = password.getText().toString();
+                //checks for empty input
                 if(email.isEmpty()){
                     emailId.setError("Please enter email id");
                     emailId.requestFocus();
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
+        //Changes Intent from signing up to singing in
         textSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

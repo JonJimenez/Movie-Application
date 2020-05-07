@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,7 +41,7 @@ public class MovieInfo extends AppCompatActivity {
         final ImageView posterView = (ImageView) findViewById(R.id.imageView2);
         final TextView actorsView = (TextView) findViewById(R.id.Actors);
         final Button backToHome = (Button)findViewById(R.id.button2);
-        final Button favorite = (Button)findViewById(R.id.button3);
+        final ToggleButton favorite = (ToggleButton)findViewById(R.id.toggleButton);
 
         backToHome.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -49,7 +50,7 @@ public class MovieInfo extends AppCompatActivity {
                 startActivity(intToHome);
             }
         });
-
+//gets movie title from home screen and turns it into a url
         Intent in = getIntent();
         String movie = in.getStringExtra("input").replaceAll(" ","+");
         String apiKey="&apikey=97d1039f";
@@ -65,6 +66,7 @@ public class MovieInfo extends AppCompatActivity {
                             JSONObject movie = new JSONObject(response);
                             String result = movie.getString("Response");
                             if(result.equals("True")){
+                                //Retrieves these values from the api request
                                 String title = movie.getString("Title");
                                 String rated = movie.getString("Rated");
                                 String director = movie.getString("Director");
@@ -97,6 +99,7 @@ public class MovieInfo extends AppCompatActivity {
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
+    //used to download and show the poster
     private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
         ImageView imageView;
 
